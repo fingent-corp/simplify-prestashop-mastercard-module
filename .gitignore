@@ -1,0 +1,10 @@
+.DS_Store
+.idea/
+*.ipr
+*.iml
+node_modules/
+errorShots/
+config.xml
+/simplifycommerce.zip
+*.less
+*.css.map
