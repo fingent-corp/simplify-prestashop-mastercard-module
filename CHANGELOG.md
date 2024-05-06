@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.1] - 2024-05-07
+### Added
+- User will be notified, if there is a new plugin version available on Git Hub.
+
 ## [2.4.0] - 2023-11-07
 ### Changed
 - Enhanced Compatibility: Compatible with PHP 8.1 & PrestaShop 8.0.x (tested with v8.0.4).

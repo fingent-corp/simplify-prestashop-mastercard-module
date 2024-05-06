@@ -57,6 +57,9 @@ Version v2.4.0
 - Updated Simplify SDK Version to 1.7.0.
 - Full Refund and Partial Refund Operation in Admin Panel.
 
+Version v2.4.1
+- User will be notified, if there is a new plugin version available on Git Hub.
+
 ## Installation
 1. Make a backup of your site before applying new mods etc.
 2. Download the .zip file of the latest release of the extension from https://github.com/simplifycom/simplify-prestashop-module/releases/latest
