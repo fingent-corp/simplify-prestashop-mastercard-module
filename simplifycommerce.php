@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2017-2023 Mastercard
+ * Copyright (c) 2017-2024 Mastercard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ class SimplifyCommerce extends PaymentModule
     {
         $this->name = 'simplifycommerce';
         $this->tab = 'payments_gateways';
-        $this->version = '2.4.0';
+        $this->version = '2.4.1';
         $this->author = 'Mastercard';
         $this->ps_versions_compliancy = array('min' => '1.7', 'max' => _PS_VERSION_);
         $this->currencies = true;
@@ -1397,5 +1397,52 @@ class SimplifyCommerce extends PaymentModule
         $html .= $this->display(__FILE__, 'views/templates/hook/module-wrapper.tpl');
 
         return $html;
+    }
+
+    public function checkForUpdates()
+    {
+        // Get the latest release information from GitHub
+        $latestRelease = $this->getLatestGitHubVersion();
+
+        // Compare the latest release version with the current module version
+        if ($latestRelease !== null && version_compare($latestRelease['version'], $this->version, '>')) {
+            // Newer version available
+            return [
+                'available' => true,
+                'version' => $latestRelease['version'],
+                'download_url' => $latestRelease['download_url']
+            ];
+        } else {
+            // Module is up to date
+            return [
+                'available' => false,
+                'version' => $this->version
+            ];
+        }
+    }
+
+    private function getLatestGitHubVersion() {
+        $owner = 'fingent-corp';
+        $repo = 'simplify-prestashop-mastercard-module';
+        $url = "https://api.github.com/repos/{$owner}/{$repo}/releases/latest";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mastercard');
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return null; 
+        }
+        curl_close($ch);
+        $data = json_decode($response, true);
+        
+        if (isset($data['tag_name']) && isset($data['assets'][0]['browser_download_url'])) {
+            return [
+                'version' => $data['tag_name'],
+                'download_url' => $data['assets'][0]['browser_download_url']
+            ];
+        } else {
+            return null;
+        }
     }
 }
