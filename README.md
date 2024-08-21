@@ -60,6 +60,9 @@ Version v2.4.0
 Version v2.4.1
 - User will be notified, if there is a new plugin version available on Git Hub.
 
+Version v2.4.2
+- Customer details are populated in transaction details in Simplify Gateway.
+
 ## Installation
 1. Make a backup of your site before applying new mods etc.
 2. Download the .zip file of the latest release of the extension from https://github.com/simplifycom/simplify-prestashop-module/releases/latest

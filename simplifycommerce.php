@@ -62,7 +62,7 @@ class SimplifyCommerce extends PaymentModule
     {
         $this->name = 'simplifycommerce';
         $this->tab = 'payments_gateways';
-        $this->version = '2.4.1';
+        $this->version = '2.4.2';
         $this->author = 'Mastercard';
         $this->ps_versions_compliancy = array('min' => '1.7', 'max' => _PS_VERSION_);
         $this->currencies = true;
@@ -900,7 +900,42 @@ class SimplifyCommerce extends PaymentModule
             }
         }
 
+        $customer = Simplify_Customer::createCustomer(
+            array(
+                'email'     => (string)$this->context->cookie->email,
+                'name'      => (string)$this->context->cookie->customer_firstname.' '.(string)$this->context->cookie->customer_lastname,
+                'reference' => sprintf(
+                        "%s %d",
+                        $this->context->shop->name,
+                        (int)$this->context->cookie->id_customer
+                ),
+            )
+        );
+
         $charge = (float)$this->context->cart->getOrderTotal();
+
+        $billing_address_id = (int)$this->context->cart->id_address_invoice;
+        $billing_address = new Address($billing_address_id);
+
+        $country = new Country($billing_address->id_country);
+        $state = new State($billing_address->id_state);
+
+        $shipping_address_id = (int)$this->context->cart->id_address_delivery;
+        $shipping_address = new Address($shipping_address_id);
+
+        $shipcountry = new Country( $shipping_address->id_country);
+        $shipstate = new State( $shipping_address->id_state);
+
+        $orderinfo = array(
+            'reference' => $customer->id,
+            'shippingAddress' => array(
+                'line1'   => $shipping_address->address1,
+                'city'    => $shipping_address->city,
+                'zip'     => $shipping_address->postcode,
+                'state'   => $shipstate->iso_code,
+                'country' => $shipcountry->iso_code,
+            )
+        );
 
         $payment_status = null;
         try {
@@ -921,6 +956,8 @@ class SimplifyCommerce extends PaymentModule
                     'token'       => $token, // Token returned by Simplify Card Tokenization
                     'description' => $description,
                     'currency'    => $currency_order->iso_code,
+                    'customer'    => $customer->id,
+                    'order'       => $orderinfo,
                 );
             }
 
