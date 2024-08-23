@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.2] - 2024-08-23
+### Added
+- Customer details are populated in transaction details in Simplify Gateway.
+
 ## [2.4.1] - 2024-05-07
 ### Added
 - User will be notified, if there is a new plugin version available on Git Hub.
