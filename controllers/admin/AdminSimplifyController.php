@@ -174,7 +174,7 @@ class AdminSimplifyController extends ModuleAdminController
             'amount' => $payment->amount / 100,
             'date_created' => $payment->transactionData->date,
             );
-            if (!Db::getInstance()->insert('simplifyvoid_table', $data)) {
+            if (!Db::getInstance()->insert('simplify_void_table', $data)) {
                 throw new Exception('Error inserting Void data into the database.');
             }
         }
