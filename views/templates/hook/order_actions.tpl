@@ -33,7 +33,7 @@
             {if $can_void}
 				<a id="desc-order-void_payment" class="btn btn-default" href="{$link->getAdminLink('AdminSimplify')|escape:'html':'UTF-8'}&amp;action=void&amp;id_order={$order->id|intval}">
 					<i class="icon-remove"></i>
-                    {l s='Reverse Authorization' mod='simplifycommerce'}
+                    {l s='Void' mod='simplifycommerce'}
 				</a>
             {/if}
 		</div>

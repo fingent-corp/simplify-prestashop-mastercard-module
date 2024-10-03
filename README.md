@@ -63,6 +63,10 @@ Version v2.4.1
 Version v2.4.2
 - Customer details are populated in transaction details in Simplify Gateway.
 
+Version v2.4.3
+- Implemented a feature to enable or disable debug logging. All communication data is encrypted and stored in a log file.
+- Added void details to the order page.
+
 ## Installation
 1. Make a backup of your site before applying new mods etc.
 2. Download the .zip file of the latest release of the extension from https://github.com/simplifycom/simplify-prestashop-module/releases/latest
@@ -122,9 +126,9 @@ To capture the order, go to the order details page and click the "Capture Paymen
 
 ![Capture](docs/images/capture.png "Capture")
 
-### Reverse Authorization
+### Void Authorization
 
-Reverse Authorization is used to cancel the order if the merchant finds any fraud/suspect in that order.
+Void Authorization is used to cancel the order if the merchant finds any fraud/suspect in that order.
 
 ![Reverse Authorization](docs/images/reverse-authorization.png "Reverse Authorization")
 

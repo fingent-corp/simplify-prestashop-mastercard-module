@@ -1,5 +1,5 @@
 {**
-* Copyright (c) 2017-2023 Mastercard
+* Copyright (c) 2017-2024 Mastercard
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -261,6 +261,30 @@
                                value="{$overlay_color|escape:'htmlall':'UTF-8'}"/>
                     </div>
 
+                    <div class="left half option">
+                        <h3>{l s='Enable Debug Logs' mod='simplifycommerce'}</h3>
+
+                        <p>
+                            {l s='All communications with the Simplify Mastercard Gateway are encrypted 
+                            and logged in the ./var/logs/mastercard_simplify.log. The decrypted 
+                            log file can be' mod='simplifycommerce'}  <a href="#" id="download-log-link">downloaded</a> here.
+
+                        </p>
+
+                        <div class="yes-no-container">
+                            <input class="radioInput" type="radio" name="simplify_enabled_error_log" value="1"
+                                    {if isset($enabled_error_log) && $enabled_error_log == 1}
+                                        checked="checked"
+                                    {/if}
+                            /><span>Yes</span>
+                            <input class="radioInput" type="radio" name="simplify_enabled_error_log" value="0"
+                                    {if isset($enabled_error_log) && $enabled_error_log == 0}
+                                        checked="checked"
+                                    {/if}
+                            /><span>No</span>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="clearfix">
                     <input type="submit"
@@ -291,5 +315,40 @@
         $modalOverlayColor.change(function () {
             $colorSelector.spectrum('set', $(this).val());
         });
+    });
+</script>
+<script type="text/javascript">
+    document.getElementById('download-log-link').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Send an AJAX request to trigger the log decryption and download
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '{$module_dir}simplifydownloadtrigger.php', true);
+
+        // Set response type to blob (binary data)
+        xhr.responseType = 'blob';
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Create a Blob from the response
+                var blob = new Blob([xhr.response], { type: 'text/plain' });
+
+                // Create a download link for the decrypted log
+                var downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(blob);
+                downloadLink.download = 'mastercard_simplify.log'; // Name the file
+                document.body.appendChild(downloadLink); // Append the link to the body
+                downloadLink.click(); // Trigger the download
+                document.body.removeChild(downloadLink); // Remove the link after download
+            }
+        };
+
+        // Handle error case (optional)
+        xhr.onerror = function () {
+            alert('An error occurred while trying to download the log file.');
+        };
+
+        // Send the request
+        xhr.send();
     });
 </script>

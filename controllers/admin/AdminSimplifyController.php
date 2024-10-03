@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2019-2023 Mastercard
+ * Copyright (c) 2019-2024 Mastercard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,6 +79,8 @@ class AdminSimplifyController extends ModuleAdminController
             'amount'        => $auth->amount
         ]);
 
+        $this->module->logMessage("Capture payment details: " . $payment);
+
         if($payment->declineReason === "AUTHORIZATION_EXPIRED"){
             $comment = "System error : Authorization expired for this order";
             $this->insertCapture($payment,$orderId,$comment);
@@ -147,7 +149,7 @@ class AdminSimplifyController extends ModuleAdminController
 
         $auth = Simplify_Authorization::findAuthorization($txnId);
         $auth->deleteAuthorization();
-
+        $this->module->logMessage("Void details: " . $auth);
         $this->updateOrder(
             $auth->id,
             $order
@@ -166,6 +168,15 @@ class AdminSimplifyController extends ModuleAdminController
         if ($payment->reversed === true) {
             
             $newStatus = Configuration::get('PS_OS_CANCELED');
+            $data = array(
+            'order_id' => $order->id,
+            'transcation_id' => $payment->id,
+            'amount' => $payment->amount / 100,
+            'date_created' => $payment->transactionData->date,
+            );
+            if (!Db::getInstance()->insert('simplifyvoid_table', $data)) {
+                throw new Exception('Error inserting Void data into the database.');
+            }
         }
 
         if ($payment->captured === true) {
@@ -246,6 +257,8 @@ class AdminSimplifyController extends ModuleAdminController
                 'amount' => $amount,
                 'payment' => $valueToUse,
             ]);
+
+            $this->module->logMessage("Partial refund details: " . $refund);
 
             if($refund->paymentStatus === "APPROVED"){
                 $comment = "Transaction Successful";
@@ -349,6 +362,9 @@ class AdminSimplifyController extends ModuleAdminController
                 'amount' => $amount,
                 'payment' => $valueToUse,
             ]);
+
+            $this->module->logMessage("Full refund details: " . $refund);
+
             if($refund->paymentStatus === "APPROVED"){
                 $comment = "Transaction Successful";
                 // Insert the refund details into the database
