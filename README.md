@@ -77,16 +77,19 @@ Version v2.4.3
 Please proceed with the following actions to configure the payment method:
 
 1. Log in to your PrestaShop administration application.
-2. Go to Modules > Module Manager
-3. Scroll down until you find the 'Mastercard Payment Gateway Services - Simplify' extension, and click on the Configure button
-4. Enter your public and private API keys into the appropriate fields for the Live and Test mode. For information on your API keys go to https://www.simplify.com/commerce/docs/misc/index. NOTE: When working with Hosted Payments, you'll need to establish and activate an API key pair designed for Hosted Payments.
-5. Select the Enable Payment Method to 'Yes'.
-6. Enter a Payment Method Title. This will be the name shown to your users on the checkout form.
-7. Choose between Payment and Authorize in Transaction Mode.
-8. Choose between Embedded Payment Form and Modal Payment Window in the Hosted Checkout Method.  
-9. Map the Successful and Declined status to suit your workflow. This does not affect the Simplify Commerce configuration.
-10. If you use multiple Payment Providers you can use Sort Order to configure how they're shown on the checkout form.
-11. Don't forget to Enable the extension to activate it.
+2. Navigate to Modules > Module Manager.
+3. Locate the ‘Mastercard Payment Gateway Services – Simplify’ extension and click on the Configure button.
+4. Enter your public and private API keys into the appropriate fields for the Live and Test mode. Refer to https://www.simplify.com/commerce/docs/misc/index for details on obtaining API keys. NOTE: When using Hosted Payments, ensure to activate an API key pair specifically for Hosted Payments.
+5. Select the Enable Payment Method to ‘Yes’.
+6. Save Customer Details: Enable customers to save their card details securely on Simplify servers for future transactions.
+7. Provide a Payment Method Title, which will be displayed to users during checkout.
+8. Choose between Payment and Authorize in Transaction Mode.  
+9. Select between Embedded Payment Form and Modal Payment Window in the Hosted Payment Method.
+10. Map the Successful and Declined status to suit your workflow. This does not affect the Simplify Commerce configuration.
+11. If multiple Payment Providers are used, adjust the Sort Order to determine their display sequence on the checkout form.
+12. Option to choose Button color: Please select your preferred color from the options provided.
+13. Enable/Disable the option to log data into ./var/logs/mastercard_simplify.log. All communications with the Simplify Mastercard Gateway are securely encrypted. You can also download the decrypted log file directly from the plugin configuration page.
+14. Remember to enable the extension to activate the changes.
 
 ![Configuration](docs/images/configuration.png "Configuration")
 
@@ -130,7 +133,7 @@ To capture the order, go to the order details page and click the "Capture Paymen
 
 Void Authorization is used to cancel the order if the merchant finds any fraud/suspect in that order.
 
-![Reverse Authorization](docs/images/reverse-authorization.png "Reverse Authorization")
+![Void Authorization](docs/images/void-authorization.png "Void Authorization")
 
 ### Refund / Partial Refund Transactions
 
