@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file.
 ## [2.4.3] - 2024-10-04
 ### Added
 - Implemented a feature to enable or disable debug logging. All communication data is encrypted and stored in a log file.
-
-### Fix
 - Added void details to the order page.
 
 ## [2.4.2] - 2024-08-23
