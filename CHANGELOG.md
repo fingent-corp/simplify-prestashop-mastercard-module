@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.4] - 2025-01-28
+### Added
+- Enhanced Compatibility: Compatible with PHP 8.1 & PrestaShop 8.2.x (tested with v8.2.0).
+- Implemented a feature to enable/disable the transmission of line items to the payment gateway.
+- As part of plugin analytics, the plugin will start capturing download count from GitHub and the active installation count. The Active count, Store Name, Store URL, and the Country configured in the PrestaShop Admin page will be captured once the Live Private Key and Public Key are saved in the configuration page.
+
+### Fixed
+- Minor bug fixes.
+
 ## [2.4.3] - 2024-10-04
 ### Added
 - Implemented a feature to enable or disable debug logging. All communication data is encrypted and stored in a log file.

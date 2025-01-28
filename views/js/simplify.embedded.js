@@ -20,14 +20,14 @@ $(function () {
         return;
     }
 
-    var CARD_TYPE_OLD = 'old';
-    var CART_TYPE_NEW = 'new';
-    var PAYMENT_CODE = 'simplifycommerce_embedded';
+    let CARD_TYPE_OLD = 'old';
+    let CART_TYPE_NEW = 'new';
+    let PAYMENT_CODE = 'simplifycommerce_embedded';
 
     /**
      * Elements registry
      */
-    var elements = {
+    let elements = {
         conditionApproveElement: $('[id="conditions_to_approve[terms-and-conditions]"]'),
         paymentContainer: $('#simplify_embedded_payment_container'),
         ajaxLoader: $('#simplify_embedded_ajax_loader'),
@@ -60,7 +60,7 @@ $(function () {
     /**
      * State Initialization
      */
-    var state = {
+    let state = {
         hasSavedCard: window.simplifyHasSavedCard,
         paymentError: false,
         chosenCardType: CARD_TYPE_OLD,
@@ -286,7 +286,7 @@ $(function () {
     /**
      * Payment initialization
      */
-    var hostedPaymentsObject = SimplifyCommerce.hostedPayments(
+    let hostedPaymentsObject = SimplifyCommerce.hostedPayments(
         paymentCallback,
         window.getEmbeddedConfig()
     );
@@ -315,7 +315,7 @@ $(function () {
      * @param url
      */
     function getUrlParam(name, url) {
-        var results, res;
+        let results, res;
 
         if (!url) {
             url = window.location.href;
@@ -330,9 +330,9 @@ $(function () {
      */
     function showSimplifyPaymentForm() {
 
-        var id = elements.paymentForm.parents(".js-payment-option-form").attr("id");
-        var match = id && id.match("pay-with-payment-option-([0-9]+)-form");
-        var number = match && match[1];
+        let id = elements.paymentForm.parents(".js-payment-option-form").attr("id");
+        let match = id && id.match("pay-with-payment-option-([0-9]+)-form");
+        let number = match && match[1];
         $("#payment-option-" + number).click();
 
         elements.conditionApproveElement.prop('checked', true);
@@ -341,7 +341,7 @@ $(function () {
         })
     }
 
-    var simplifyError = getUrlParam('simplify_error');
+    let simplifyError = getUrlParam('simplify_error');
     if (simplifyError) {
         showSimplifyPaymentForm();
         setState({

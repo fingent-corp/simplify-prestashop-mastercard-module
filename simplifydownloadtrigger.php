@@ -16,27 +16,19 @@
  *
  */
 
-include(dirname(__FILE__).'/../../config/config.inc.php');
-include(dirname(__FILE__).'/../../init.php');
-include(dirname(__FILE__).'/simplifycommerce.php');
+include_once(dirname(__FILE__).'/../../config/config.inc.php');
+include_once(dirname(__FILE__).'/../../init.php');
+include_once(dirname(__FILE__).'/simplifycommerce.php');
 
 if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-// Load necessary module classes
-require_once(_PS_MODULE_DIR_.'simplifycommerce/simplify-api-logger.php');
-
-
 // Get your public and private keys from configuration
-$public_key = Configuration::get('SIMPLIFY_PUBLIC_KEY');
-$private_key = Configuration::get('SIMPLIFY_PRIVATE_KEY');
-$hash = hash('sha256', $public_key . $private_key);
-
-// Initialize the Mastercard_Simplify_Api_Logger with the hash
-$logger = new Mastercard_Simplify_Api_Logger($hash);
-
-// Decrypt and retrieve the log data
-$decrypted_log_data = $logger->read_decrypted_log();
+$public_key         = Configuration::get('SIMPLIFY_PUBLIC_KEY');
+$private_key        = Configuration::get('SIMPLIFY_PRIVATE_KEY');
+$hash               = hash('sha256', $public_key . $private_key);
+$logger             = new MastercardSimplifyApiLogger($hash);
+$decryptedLogData   = $logger->readDecryptedLog();
 
 exit();

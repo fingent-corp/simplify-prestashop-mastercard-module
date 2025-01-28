@@ -153,10 +153,6 @@
 .simplify-module-wrapper .btn:visited {
     background-color: #F60 !important;
     color: #FFF !important;
-    -webkit-transition: background-color .25s ease-in;
-    -moz-transition: background-color .25s ease-in;
-    -o-transition: background-color .25s ease-in;
-    transition: background-color .25s ease-in;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -401,7 +397,7 @@ body#checkout section.checkout-step .payment-options .simplify-cc-details label.
     opacity: 0.3;
 }
 
-i.simplifyFormContainer mg.enable {
+i.simplifyFormContainer img.enable {
     opacity: 1;
 }
 
@@ -482,10 +478,6 @@ i.simplifyFormContainer mg.enable {
 
 .secure-icon-img {
     margin: 15px 0 0 5px;
-}
-
-.simplifyFormContainer .test-msg {
-
 }
 
 .simplifyFormContainer .card-detail {
@@ -608,14 +600,6 @@ i.simplifyFormContainer mg.enable {
     height: 0;
 }
 
-.simplifyFormContainer .clearfix {
-    display: inline-block;
-}
-
-.simplify-module-wrapper .clearfix {
-    display: inline-block;
-}
-
 * html .simplify-clearfix {
     height: 1%;
 }
@@ -703,7 +687,7 @@ i.simplifyFormContainer mg.enable {
 
 .simplify-technical img {
     height: 1.0rem;
-    widgth: 1.0rem;
+    width: 1.0rem;
 }
 
 .simplify-require-text {
@@ -906,11 +890,6 @@ i.simplifyFormContainer mg.enable {
 
 .simplify-form-container .save-card-container.hidden {
     display: none;
-}
-
-.simplify-form-container .simplify-new-card-container iframe {
-    border: 0;
-    max-width: 450px;
 }
 
 .simplify-form-container .simplify-new-card-container.hidden {

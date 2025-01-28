@@ -285,6 +285,27 @@
                         </div>
                     </div>
 
+                    <div class="left half option">
+                        <h3>{l s='Send Line Items' mod='simplifycommerce'}</h3>
+
+                        <p>
+                            {l s='Include line item details on gateway order' mod='simplifycommerce'}
+
+                        </p>
+
+                        <div class="yes-no-container">
+                            <input class="radioInput" type="radio" name="simplify_enable_line_items" value="1"
+                                    {if isset($enable_line_items) && $enable_line_items == 1}
+                                        checked="checked"
+                                    {/if}
+                            /><span>Yes</span>
+                            <input class="radioInput" type="radio" name="simplify_enable_line_items" value="0"
+                                    {if isset($enable_line_items) && $enable_line_items == 0}
+                                        checked="checked"
+                                    {/if}
+                            /><span>No</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="clearfix">
                     <input type="submit"
