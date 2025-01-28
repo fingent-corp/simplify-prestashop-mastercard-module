@@ -8,8 +8,8 @@ The Simplify Commerce module is not bundled in the PrestaShop download.
 
 The latest release of the plugin has the following system requirements:
 
-- PHP version 8.0 or higher is mandatory.
-- PrestaShop version 8.0.4 or later is required. However, we strongly recommend using the latest available version of PrestaShop for optimal performance.
+- PHP version 8.1.
+- PrestaShop version 8.2.0 or later is required. However, we strongly recommend using the latest available version of PrestaShop for optimal performance.
 
 ## Documentation
 
@@ -67,6 +67,12 @@ Version v2.4.3
 - Implemented a feature to enable or disable debug logging. All communication data is encrypted and stored in a log file.
 - Added void details to the order page.
 
+Version v2.4.4
+- Enhanced Compatibility: Compatible with PHP 8.1 & PrestaShop 8.2.x (tested with v8.2.0).
+- Implemented a feature to enable/disable the transmission of line items to the payment gateway.
+- As part of plugin analytics, the plugin will start capturing download count from GitHub and the active installation count. The Active count, Store Name, Store URL, and the Country configured in the PrestaShop Admin page will be captured once the Live Private Key and Public Key are saved in the configuration page.
+- Minor bug fixes.
+
 ## Installation
 1. Make a backup of your site before applying new mods etc.
 2. Download the .zip file of the latest release of the extension from https://github.com/simplifycom/simplify-prestashop-module/releases/latest
@@ -89,7 +95,8 @@ Please proceed with the following actions to configure the payment method:
 11. If multiple Payment Providers are used, adjust the Sort Order to determine their display sequence on the checkout form.
 12. Option to choose Button color: Please select your preferred color from the options provided.
 13. Enable/Disable the option to log data into ./var/logs/mastercard_simplify.log. All communications with the Simplify Mastercard Gateway are securely encrypted. You can also download the decrypted log file directly from the plugin configuration page.
-14. Remember to enable the extension to activate the changes.
+14. Enable/Disable this option to send the additional data to the Mastercard Gateway.
+15. Remember to enable the extension to activate the changes.
 
 ![Configuration](docs/images/configuration.png "Configuration")
 
