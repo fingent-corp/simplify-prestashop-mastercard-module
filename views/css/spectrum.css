@@ -32,6 +32,10 @@ License: MIT
     /* https://github.com/bgrins/spectrum/issues/40 */
     z-index: 9999994;
     overflow: hidden;
+    border-radius: 0;
+    background-color: #ECECEC;
+    border: solid 1px #f0c49B;
+    padding: 0;
 }
 .sp-container.sp-flat {
     position: relative;
@@ -50,6 +54,7 @@ License: MIT
   position:relative;
   width: 100%;
   display:inline-block;
+  margin-bottom: 3px;
 }
 .sp-top-inner {
    position:absolute;
@@ -72,6 +77,12 @@ License: MIT
     bottom:0;
     left:84%;
     height: 100%;
+    background: -moz-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -ms-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -o-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), color-stop(0.17, #ffff00), color-stop(0.33, #00ff00), color-stop(0.5, #00ffff), color-stop(0.67, #0000ff), color-stop(0.83, #ff00ff), to(#ff0000));
+    background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
 }
 
 .sp-clear-enabled .sp-hue {
@@ -188,15 +199,6 @@ License: MIT
     filter : progid:DXImageTransform.Microsoft.gradient(startColorstr='#00CC9A81', endColorstr='#FF000000');
 }
 
-.sp-hue {
-    background: -moz-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-    background: -ms-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-    background: -o-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-    background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), color-stop(0.17, #ffff00), color-stop(0.33, #00ff00), color-stop(0.5, #00ffff), color-stop(0.67, #0000ff), color-stop(0.83, #ff00ff), to(#ff0000));
-    background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-    background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
-}
-
 /* IE filters do not support multiple color stops.
    Generate 6 divs, line them up, and do two color gradients for each.
    Yes, really.
@@ -270,12 +272,6 @@ Here are the basic themeable display options (colors, fonts, global widths).
 See http://bgrins.github.io/spectrum/themes/ for instructions.
 */
 
-.sp-container {
-    border-radius: 0;
-    background-color: #ECECEC;
-    border: solid 1px #f0c49B;
-    padding: 0;
-}
 .sp-container, .sp-container button, .sp-container input, .sp-color, .sp-hue, .sp-clear {
     font: normal 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
     -webkit-box-sizing: border-box;
@@ -283,9 +279,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     -ms-box-sizing: border-box;
     box-sizing: border-box;
 }
-.sp-top {
-    margin-bottom: 3px;
-}
+
 .sp-color, .sp-hue, .sp-clear {
     border: solid 1px #666;
 }
@@ -341,11 +335,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     display: block;
     position:relative;
     float:left;
-    width: 24px;
-    height: 15px;
-    margin: 3px;
     cursor: pointer;
-    border:solid 2px transparent;
+    width:16px;
+    height: 16px;
+    margin:2px 1px;
+    border: solid 1px #d0d0d0;
 }
 .sp-palette .sp-thumb-el:hover, .sp-palette .sp-thumb-el.sp-thumb-active {
     border-color: orange;
@@ -386,7 +380,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     padding: 4px;
     display:inline-block;
     *zoom: 1;
-    *display: inline;
     border: solid 1px #91765d;
     background: #eee;
     color: #333;
@@ -422,17 +415,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     *width: 220px;
     max-width: 220px;
 }
-.sp-palette .sp-thumb-el {
-    width:16px;
-    height: 16px;
-    margin:2px 1px;
-    border: solid 1px #d0d0d0;
-}
-
-.sp-container {
-    padding-bottom:0;
-}
-
 
 /* Buttons: http://hellohappy.org/css3-buttons/ */
 .sp-container button {
