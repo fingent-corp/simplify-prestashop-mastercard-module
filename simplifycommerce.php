@@ -39,7 +39,7 @@ class SimplifyCommerce extends PaymentModule
     const PAYMENT_OPTION_MODAL      = 'modal';
     const PAYMENT_OPTION_EMBEDDED   = 'embedded';
     const SIMPLIFY_MODULE_KEY       = '937f0cb1dd5fdb7c8971be3c30ac879a895406b0f4a73642e7aedbec99c341f1';
-    const MPGS_API_URL              = 'https://dev-wiki.fingent.net/wp-json/mpgs/v2/update-repo-status';
+    const MPGS_API_URL              = 'https://mpgs.fingent.wiki/wp-json/mpgs/v2/update-repo-status';
     const SQL_CREATE_TABLE          = 'CREATE TABLE IF NOT EXISTS `';
     const SQL_TABLE_ENGINE          = ' ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8 AUTO_INCREMENT=1';
 
