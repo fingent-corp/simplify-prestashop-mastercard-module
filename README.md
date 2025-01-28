@@ -100,6 +100,9 @@ Please proceed with the following actions to configure the payment method:
 
 ![Configuration](docs/images/configuration.png "Configuration")
 
+## Disclaimer!
+Starting from version 2.4.4, the plugin will collect analytics data, including the plugin download count from GitHub and the active installation count. The Active count, Store Name, Store URL, and the Country configured in the PrestaShop Admin page will be captured once the Live Private Key and Public Key are saved in the configuration page.
+
 ## Transaction Mode
 
 ### Payment
