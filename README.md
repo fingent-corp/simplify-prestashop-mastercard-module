@@ -1,3 +1,10 @@
+## ⚠️ This repository is no longer actively maintained
+![No Maintenance Intended](http://unmaintained.tech/badge.svg)
+
+# Notice
+
+## Please note that this repository will be discontinued as of July 01, 2025, and no further support will be provided thereafter.
+
 # Simplify Commerce Payment module for PrestaShop
 
 This plugin adds Simplify Commerce as a payment option on your PrestaShop checkout page.
